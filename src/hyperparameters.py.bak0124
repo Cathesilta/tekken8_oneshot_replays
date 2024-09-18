@@ -1,0 +1,64 @@
+import os
+
+class hyperparameters():
+    
+    ### Video Path
+    video_path = './videos/dvc'
+    input_video = os.path.join(video_path, 'processed_video.mp4')
+    output_file = os.path.join(video_path, 'scoreboard_added.mp4')
+    ### Anchor Image Path
+    Ref_Img_Path_01 = './reference_image/Round1.png'
+    Ref_Img_Path_02 = './reference_image/WINS.png'
+    
+    #--------------------------------------------------------------------------------------------
+    ### Output Quality
+    trim_resolution = '1920x1080'
+    enc_bitrate = '1M'
+    bitrate = '60M'
+    # output_resolution = 'scale=2560:1440'
+    output_resolution = 'scale=1920:1080'
+    
+    #--------------------------------------------------------------------------------------------
+    ### Scan for timming
+    threshold_1 = 0.3          # this threshold corresponds to the matchsocre of start anchor, in SF6 it's Round1
+    threshold_2 = 0.7          # this threshold corresponds to the matchsocre of end anchor, in SF6 it's WINS
+    
+    riy = 325                  # this is the position and size you should crop to whenever you capture frames, in SF6 Round1
+    riy2 = 325+314
+    rix = 556
+    rix2 = 556+677
+    
+    ri2y = 811                 # same from above, but this for end anchor, in SF6 it's WINS
+    ri2y2 = 994
+    ri2x = 722
+    ri2x2 = 1194
+    
+    # Hyperparameters for finding start timming
+    start_searching_time_start_anchor = 5 #searching from x second of the video
+    time_interval = 0.2 # how many second a capture
+    tolerate_time_start_anchor = 20 # we tolerate it x sec until finding the anchor
+    trim_start_offset = -0.5 # x sec from anchor to the exact trim start point
+    
+    # Hyperparameters for finding end timming
+    start_searching_time_end_anchor = 3 # this is a reverse time, 3 means 3 sec from end of the video
+    tolerate_time_end_anchor = 20 # we tolerate it x sec until finding the anchor
+    trim_end_offset = -2 # x second from anchor text to the exact trim end point
+
+    trim_first_video_start_offset = -4.4 # based on start_time
+    
+    #--------------------------------------------------------------------------------------------
+    ### Score Board
+    fontsize = 48
+    font_color = 'white'
+    scoreboard_color = '#09335C'
+    stroke_line_color = 'white'
+    sb_p1_pos = (682,7)     # player1 scoreboard position
+    sb_p1_size = (50,46)
+    sb_p2_pos = (1189,7)     # player2 scoreboard position
+    sb_p2_size = sb_p1_size   
+    stroke_offset = 2       # how thick the stroke line is
+    # calculate the stroke line's position and sieze
+    stroke_p1_pos = (sb_p1_pos[0]-stroke_offset, sb_p1_pos[1]-stroke_offset)
+    stroke_p1_size = (sb_p1_size[0]+2*stroke_offset, sb_p1_size[1]+2*stroke_offset)
+    stroke_p2_pos = (sb_p2_pos[0]-stroke_offset, sb_p2_pos[1]-stroke_offset)
+    stroke_p2_size = (sb_p2_size[0]+2*stroke_offset, sb_p2_size[1]+2*stroke_offset)    

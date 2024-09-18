@@ -1,0 +1,68 @@
+Path:
+  video_process_dir : './videos/Tekken8/'
+  character_avatar_dir : './information_base/Tekken8/image/character_avatar/'
+  anchor_image_dir : './information_base/Tekken8/image/anchor_image/'
+  # video_recording_dir: 'D:/data/Nvidia Shadow Play/Desktop/'
+  video_recording_dir: 'D:/data/nvidia experience/shadow plays/Polaris'
+  # video_recording_dir: 'D:/data/Nvidia Shadow Play/Tekken 8/'
+  font_path: './information_base/font/CityBrawlersBoldCaps.otf'
+  
+
+
+
+Filename:
+  scoreboarded_video_filename : 'scoreboarded_video.mp4'
+  concat_video_filename : 'concatenated_video.mp4'
+
+
+Hyperparameters:
+  vs_screen_time: 9
+  font_size : 270   #player font size
+  PN_y : 750        #player name showing position y
+  threshold_1 : 0.4          # this threshold corresponds to the matchsocre of start anchor, in Tekken8 it's Round1
+  threshold_2 : 0.72          # this threshold corresponds to the matchsocre of end anchor, in Tekken8 it's ending_box
+
+Anchors:
+  round1_path: './information_base/Tekken8/image/anchor_image/Round1.png'
+  ending_box_path: './information_base/Tekken8/image/anchor_image/ending_box.png'
+
+
+Trim:
+  cutscene_play_before_round_1 : -2        # 4 seconds, let the first video play the cutscene
+  start_searching_time: 8                 # for every single video, start searching "Round1" at x sec
+  start_searching_until_time: 185          # searching for "Round1" until 40 sec
+  searching_time_interval: 0.2
+  start_before_round_1: -0.4               # this is a normal start(no cutscene) before round1
+
+  start_reverse_searching_time: 1         # this is a reverse time, 2 means 2 sec from end of the video
+  reverse_searching_until_time: 25        # we tolerate it x sec until finding the anchor
+
+  trim_end_offset: -5                   # x second from anchor text to the exact trim end point
+
+Font:
+  player_font_size : 290
+  # character_font_size : 180
+  # title_font_size : 220
+
+  player_text_color : [244, 223, 228]
+  player_1_text_shadow_color : [187, 30, 75]  # Red shadow
+  player_1_text_shadow_offset : [7, 7]  # Offset for the shadow
+  player_2_text_shadow_color : [82, 106, 202]  # Blue shadow
+  player_2_text_shadow_offset : [-7, 7] 
+
+Video_Quality:
+  bitrate: '30M'
+  resolution : '1920:1080'
+
+
+Scoreboard:
+  fontsize : 48
+  font_color : 'white'
+  scoreboard_color : '#09335C'
+  stroke_line_color : 'white'
+  sb_p1_pos : [622,7]     # player1 scoreboard position
+  sb_p1_size : [50,46]
+  sb_p2_pos : [1249,7]     # player2 scoreboard position
+  sb_p2_size : [50,46]  
+  stroke_offset : 2       # how thick the stroke line is
+  # calculate the stroke line's position and sieze
